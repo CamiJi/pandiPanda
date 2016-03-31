@@ -1,0 +1,64 @@
+<html>
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+	<title>Hire Me as a Panda</title> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">  <link rel="stylesheet" href="_static/style.css">
+	<script type="text/javascript" src="_static/jquery-1.11.0.min.js"></script>
+		
+		<!-- Latest compiled and minified CSS -->
+		<!-- J'ajoute Bootstrap pour l'intégration de la table -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="less.php?f=style.less">
+	<link rel="stylesheet" media="screen and (max-width: 768px)" href="less.php?f=style-mobile.less" />
+
+
+	<script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+
+	<div id="page">
+		<div class="header">
+			<h1><a href="#" title="Hire Me as a Panda"><img src="_static/img/logo-cogit@2x.png" title="Hire Me as a Panda" alt="Hire Me as a Panda" class="logo-header"/></a></h1>
+		</div> <!-- Fin de la Div .header  -->
+
+
+			<div id="conteneur">
+			
+				<!-- Je crée ici le canvas qui affichera le graphique donné par mes valeurs -->
+				<div id="monGraph">
+					<canvas id="myChart"></canvas>
+				</div>
+
+				<!-- On crée ici notre tableau, il est vide, les données seront injectées par le fichier main.js -->
+				<div class="table-responsive" id="divTable">
+					<table class="table table-bordered" id="myDataTab">
+
+					</table>
+
+				</div> <!-- Fin de la Div .table-responsive   -->
+				</br>
+
+				<div id="divBouton">
+				<!-- Je crée ici une Div #bouton. Elle est vide, on injectera un bouton uniquement grace à main.js. Cela permettra de ne rien afficher si JS est désactivé sur l'ordinateur de notre internaute   -->					
+				</div>
+				
+			</div> <!-- Fin de la Div .col-xs-12 col-md-8 col-md-offset-3 #conteneur   -->
+
+	</div> <!-- Fin de la Div #page  -->
+
+</body>
+
+		<!--  Je charge ici les balises NO SCRIPT pour demander à l'utilisateur d'activer JS sur son navigateur si celui-ci ne le prend pas en compte -->
+		<noscript>
+		 Pour accéder à toutes les fonctionnalités de ce site, vous devez activer JavaScript.
+		 Voici les <a href="http://www.enable-javascript.com/fr/" target="_blank">
+		 instructions pour activer JavaScript dans votre navigateur Web</a>.
+		</noscript>
+
+		<!-- J'ajoute ici ChartJs via le CDN recommandé -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+
+</html>
