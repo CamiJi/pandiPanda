@@ -4,11 +4,6 @@ $( document ).ready(function() {
 	console.log ("JQuery chargé via main.js");
 
 
-	// Je scroll tout en haut de la page au chargement, surtout utile pour les écrans réduits
-	$( "#page" ).scrollTop( 0 );
-
-
-
 	//SECTION TABLEAU
 	// Je déclare mes valeurs dans un tableau associatif nommé tableau
 	var tableau = { 
