@@ -142,6 +142,7 @@ $( document ).ready(function() {
 			    responsive: true,
 			      // Boolean - Whether the scale should begin at zero
     			scaleBeginAtZero : false,
+
 			}
 
 			// 4. Je cache le graph ici, il apparaitra plus tard
