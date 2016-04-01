@@ -4,6 +4,12 @@ $( document ).ready(function() {
 	console.log ("JQuery chargé via main.js");
 
 
+	// Je scroll tout en haut de la page au chargement, surtout utile pour les écrans réduits
+	$( "#page" ).scrollTop( 0 );
+
+
+
+	//SECTION TABLEAU
 	// Je déclare mes valeurs dans un tableau associatif nommé tableau
 	var tableau = { 
 		"janvier" : 340345,
@@ -21,8 +27,25 @@ $( document ).ready(function() {
 	};
 
 
+	// Je parcours mon tableau grace à une boucle for in qui me donne mes clés/valeurs
+	for(var key in tableau)
+	{
+	  var value = tableau[key];
 
-		// CHARGEMENT DU GRAPHIQUE VIA CHART.JS
+	  // J'affiche dans la console pour m'assurer de bien récupérer mes valeurs
+	  console.log(key + " = " + value + '<br>');
+
+	  //J'injecte mes données ligne par ligne, colonne 1 = key = mois , colonne 2 = value = valeur
+	  $( "#myDataTab" ).append( "<tr><td>"+key+"</td><td>"+value+"</td></tr>");
+	}
+
+
+
+
+
+
+
+	// CHARGEMENT DU GRAPHIQUE VIA CHART.JS
 		// Ici je suis la methode donnée par chart.js : http://www.chartjs.org/docs/
 
 		//  1.On donne les datas à notre graphe. Je réécris les données cités plus haut à la main. 
@@ -121,47 +144,61 @@ $( document ).ready(function() {
     			scaleBeginAtZero : false,
 			}
 
-
-			
-	// Je parcours mon tableau grace à une boucle for in qui me donne mes clés/valeurs
-	for(var key in tableau)
-	{
-	  var value = tableau[key];
-
-	  // J'affiche dans la console pour m'assurer de bien récupérer mes valeurs
-	  console.log(key + " = " + value + '<br>');
-
-	  //J'injecte mes données ligne par ligne, colonne 1 = key = mois , colonne 2 = value = valeur
-	  $( "#myDataTab" ).append( "<tr><td>"+key+"</td><td>"+value+"</td></tr>");
-	}
-
-
-
-
-	// Création du bouton qui permettra d'afficher le graph. On l'injecte dans la DIV#bouton gràce au sélecteur JQuery
-	$("#divBouton").append("<button type='button' class='btn btn-success' id='btnGraph'>Afficher le graphique</button>");
-
-
-	// Je cache le graph ici, il apparaitra plus tard
-	$('#monGraph').hide();
-
-	// Je code le comportement du bouton qui affichera le graphe et fera disparaitre le tableau ou inversement
-	$("#btnGraph").click(function() {
-
-		if($('#monGraph').css('display') == 'none'){
-		
-			$('#divTable').hide();
-			$('#monGraph').show();
-
-
-		}
-
-		else{
-
-			$('#divTable').show();
+			// 4. Je cache le graph ici, il apparaitra plus tard
 			$('#monGraph').hide();
 
+			
+
+
+
+
+
+
+
+
+	//SECTION BOUTON
+	// Création du bouton qui permettra d'afficher le tableau. On l'injecte dans la DIV#bouton gràce au sélecteur JQuery
+		$("#divBouton").append("<button type='button' class='btn btn-success' id='btnTab'>Afficher le tableau</button>");
+
+	// Création du bouton qui permettra d'afficher le graph. On l'injecte dans la DIV#bouton gràce au sélecteur JQuery
+		$("#divBouton").append("<button type='button' class='btn btn-success' id='btnGraph'>Afficher le graphique</button>");
+
+		
+	//Création d'une fonction qui affichera selon la situation un bouton ou l'autre
+	function changeBtn() {
+		if ($('#monGraph').css('display') == 'none') {
+				$('#btnTab').hide();
+				$('#btnGraph').show();			
+		} 
+		else {
+			$('#btnTab').show();
+			$('#btnGraph').hide();	
+
 		}
+	}
+
+	// On appelle la fonction une première fois
+	changeBtn();
+
+
+	// Je code le comportement du bouton qui affichera le graphe et fera disparaitre le tableau
+	$("#btnGraph").click(function()  {
+
+		$('#divTable').hide();
+		$('#monGraph').show();
+
+		changeBtn();
+
+	});
+
+
+	// Je code le comportement du bouton qui affichera le tableau et fera disparaitre le graphe 
+	$("#btnTab").click(function()  {
+
+		$('#divTable').show();
+		$('#monGraph').hide();
+
+		changeBtn();
 
 	});
 
