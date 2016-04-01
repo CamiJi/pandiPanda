@@ -3,9 +3,6 @@ $( document ).ready(function() {
 
 	console.log ("JQuery chargé via main.js");
 
-	// Je cache le graph ici, il apparaitra plus tard
-	$('#monGraph').hide();
-
 
 	// Je déclare mes valeurs dans un tableau associatif nommé tableau
 	var tableau = { 
@@ -29,7 +26,7 @@ $( document ).ready(function() {
 		// Ici je suis la methode donnée par chart.js : http://www.chartjs.org/docs/
 
 		//  1.On donne les datas à notre graphe. Je réécris les données cités plus haut à la main. 
-		// Il aurait été préférable de tout écrire dans un  même objet.
+		//  Il aurait été préférable de tout écrire dans un  même objet.
 			
 			var data = [
 		    {
@@ -108,6 +105,24 @@ $( document ).ready(function() {
 			];
 
 
+			// 2. On crée la chart qui s'injecte automatiquement dans le Canvas
+
+			// Get context with jQuery - using jQuery's .get() method.
+			var ctx = $("#myChart").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var myNewChart = new Chart(ctx).PolarArea(data);
+
+			// 3. On définit les caractéristiques "responsive" du graphe
+
+			Chart.defaults.global = {
+			    // Boolean - whether or not the chart should be responsive and resize when the browser does.
+			    responsive: true,
+			      // Boolean - Whether the scale should begin at zero
+    			scaleBeginAtZero : false,
+			}
+
+
+			
 	// Je parcours mon tableau grace à une boucle for in qui me donne mes clés/valeurs
 	for(var key in tableau)
 	{
@@ -127,6 +142,8 @@ $( document ).ready(function() {
 	$("#divBouton").append("<button type='button' class='btn btn-success' id='btnGraph'>Afficher le graphique</button>");
 
 
+	// Je cache le graph ici, il apparaitra plus tard
+	$('#monGraph').hide();
 
 	// Je code le comportement du bouton qui affichera le graphe et fera disparaitre le tableau ou inversement
 	$("#btnGraph").click(function() {
@@ -137,21 +154,6 @@ $( document ).ready(function() {
 			$('#monGraph').show();
 
 
-			// 2. On crée la chart qui s'injecte automatiquement dans le Canvas
-
-			// Get context with jQuery - using jQuery's .get() method.
-			var ctx = $("#myChart").get(0).getContext("2d");
-			// This will get the first returned node in the jQuery collection.
-			var myNewChart = new Chart(ctx);
-
-			new Chart(ctx).PolarArea(data);
-
-			// 3. On définit les caractéristiques "responsive" du graphe
-
-			Chart.defaults.global = {
-			    // Boolean - whether or not the chart should be responsive and resize when the browser does.
-			    responsive: true,
-			}
 		}
 
 		else{
